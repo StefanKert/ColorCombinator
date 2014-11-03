@@ -50,6 +50,6 @@ angular.module('ColorCombinatorApp', [])
 			alert("Es wurden insgesamt " + $scope.combinationCounter + " Elemente gezeichnet.");
 		};		
 		$scope.combineColors();
-	};
-}]);
+	}]);
+;
 
