@@ -1,7 +1,7 @@
 <!doctype html>
 <!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
 <!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
-<html>
+<html ng-app="ColorCombinatorApp">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -10,11 +10,13 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="javascripts/script.js"></script>
 		<script type="text/javascript" src="javascripts/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="javascripts/angular.js"></script>
+		<script type="text/javascript" src="javascripts/app.js"></script>
 		<title>Colorcombinator</title>
 		<meta name="description" content="This project is about showing all possible color combinations.">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 	</head>
-	<body>
+	<body ng-controller="ColorCombinatorController">
 		<div class="wrapper">
 			<header>
 			  <h1 class="title">Colorcombinator</h1>
@@ -49,50 +51,7 @@
 			<p class="name"></p>
 		</div>
 	<script>
-			var counter = 0;
-			var colors = ["#000000", "#0000ff", "#00ff00", "#00ffff", "#ff0000", "#ff00ff", "#ffff00", "#ffffff"];
-			var values = [];
-			var contentElement = $("#content");
-			var loops = 5;
 			
-			function printCombinations(n){
-				if(n > 0){
-					var shouldContinue = false;
-					for(var element = 0; element < loops; element++){
-						for(var i = 0; i < values.length; i++) {
-							if(values[i] === element){								
-								shouldContinue = true;
-								break;
-							}
-						}
-						if(shouldContinue){
-							shouldContinue = false;
-							continue;
-						}
-						values.push(element);
-						printCombinations(n - 1);
-						values.pop(element);
-					}
-				} 
-				else {
-					for(var i = 0; i < values.length; i++) {
-						contentElement.append("<span style='background: " + colors[values[i]] + "'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;");
-					}
-					contentElement.append("<br>");
-					counter++;
-				}
-			}
-			var elements = prompt("Bitte die gewünschte Anzahl an Elementen eingeben (1-10)", "3");
-				
-			if (elements != null && elements > 0 && elements < 8) {
-				loops = elements;
-			}
-			else {
-				MessageBox.Show("Es wurde ein ungültiger Wert angegeben daher wird der Wert 5 verwendet.");
-				loops = 5;
-			}
-			printCombinations(loops);
-			alert("Es wurden insgesamt " + counter + " Elemente gezeichnet.");
 	</script> 
 </body>
 </html>
