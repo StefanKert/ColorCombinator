@@ -448,7 +448,7 @@ a:hover {
 
 h1.title {
   margin: 30px 20px 10px;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: bold;
   font-style: italic;
   font-family:Georgia, serif;
@@ -967,3 +967,11 @@ footer .owner p a {
 
 .greenLink { color: #449D44; }
 .comibinedElementsSpan { color: #449D44; }
+.first { background: #000000; }
+.second { background: #0000FF; }
+.third { background: #00FF00; }
+.fourth { background: #00FFFF; }
+.fifth { background: #FF0000; }
+.sixth { background: #FF00FF; }
+.seventh { background: #FFFF00; }
+.eighth { background: #FFFFFF; }
