@@ -55,7 +55,7 @@ angular.module('ColorCombinatorApp', ['ngSanitize'])
 				else {
 					var html = "";
 					for(var i = 0; i < values.length; i++) {
-						html += '<span class="' + colors[values[i]] + '">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;';
+						html += '<div class="element ' + colors[values[i]] + '"></div>';
 					}
 					html += "<br>";
 					$scope.elements.push({context: html});
