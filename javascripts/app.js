@@ -1,6 +1,6 @@
 angular.module('ColorCombinatorApp', [])
 	.controller('ColorCombinatorController', ['$scope', function($scope) {
-		$scope.elements = 5;
+		$scope.elementsCount = 5;
 		$scope.combinationCounter = 0;
 		$scope.changeValues = function() {
 			var elements = prompt("Bitte die gewünschte Anzahl an Elementen eingeben (1-10)", "3");		
@@ -22,7 +22,7 @@ angular.module('ColorCombinatorApp', [])
 			function printCombinations(n){
 				if(n > 0){
 					var shouldContinue = false;
-					for(var element = 0; element < $scope.elements; element++){
+					for(var element = 0; element < $scope.elementsCount; element++){
 						for(var i = 0; i < values.length; i++) {
 							if(values[i] === element){								
 								shouldContinue = true;
@@ -46,7 +46,6 @@ angular.module('ColorCombinatorApp', [])
 					$scope.combinationCounter++;
 				}
 			}
-			printCombinations($scope.elements);
-			alert("Es wurden insgesamt " + $scope.combinationCounter + " Elemente gezeichnet.");
+			printCombinations($scope.elementsCount);
 		};		
 	}]);
