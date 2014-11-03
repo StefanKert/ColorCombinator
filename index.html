@@ -24,46 +24,65 @@
 	<body style="background: #D1D1D1" ng-controller="ColorCombinatorController">
 		<div class="wrapper">
 			<div class="row">
-				<h1 class="title"><span class="comibinedElementsSpan">C</span>olor<span class="comibinedElementsSpan">C</span>ombinator 1.1</h1>
+				<h1 class="title"><span class="comibinedElementsSpan">C</span>olor<span class="comibinedElementsSpan">C</span>ombinator 1.2</h1>
 			</div>
 			<div class="row">
 				<div class="col-xs-1 col-md-3"></div>
 				<div class="col-xs-10 col-md-6">
 					<div id="container">
 						<p class="tagline">	Mit diesem Farbgenerator soll gezeigt werden, welche Kombinationen aus einer angegebenen Menge an Elementen gebildet werden könne.
-											Dabei sollte darauf geachtet werden, dass der angegebene Wert maximal 7 ist, da die Berechnung für 8 Elemente bereits sehr lange dauern 
-											kann. Bei den erstellten Kombinationen ist in diesem Fall die Reihenfolge wichtig. Es können außerdem keine Wiederholungen der Elemente
-											auftreten.
+											Dabei sollte darauf geachtet werden, dass ohne Wiederholungen der angegebene Wert maximal 7 ist, mit Widerholungen der angegebene
+											Wert maximal 5 ist, da die Berechnung für mehr Elemente sehr lange dauern kann. Bei den erstellten Kombinationen ist in diesem 
+											Fall die Reihenfolge wichtig. Es ist außerdem möglich zu entscheiden ob Wiederholungen
+											ausgegeben werden oder nicht. <br>
+											<br>
+											Die Formeln zur Berechnung der Kombinationen von 5 Elementen <strong>OHNE</strong> Widerholung: <br>
+											<code> 5! = 5 * 4 * 3 * 2 * 1 = 120 </code> <br>
+											Die Formeln zur Berechnung der Kombinationen von 5 Elementen <strong>MIT</strong> Widerholung: <br>
+											<code> 5<sup>5</sup> = 5 * 5 * 5 * 5 * 5 = 3125 </code> <br>
 						</p>
 						<div id="main" role="main">
 							<div class="download-bar">
 								<div class="inner">
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-12">
+											<form class="form-horizontal" role="form">
+												<div class="form-group">
+													<label for="inputElementsCount" class="col-sm-3 control-label comibinedElementsSpan">Anzahl der Elemente: </label>
+													<div class="col-sm-9">
+														<input type="text" id="inputElementsCount" class="form-control" ng-model="elementsCount" placeholder="Anzahl der Elemente">
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+									<div class="row">
+											<div class="col-md-7">
+												<button type="button" class="btn btn-success" ng-click="combineColors(false)">Berechne Kombinationen</button>
+											</div>
+											<div class="col-md-5">
+												<button type="button" class="btn btn-success" ng-click="combineColors(true)">Berechne Kombinationen mit Wiederholungen</button>
+											</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
 											<span class="comibinedElementsSpan">
 												Anzahl der erzeugten Elemente: {{combinationCounter}}
 											</span>
 										</div>
-										<div class="col-md-6">
-											<form class="form-inline" role="form">
-												<div class="form-group">
-													<input type="text" class="form-control" ng-model="elementsCount" placeholder="Anzahl der Elemente">
-												</div>
-												<button type="button" class="btn btn-success" ng-click="combineColors()">Berechnen</button>
-											</form>
-										</div>
 									</div>
 								</div>
 							</div>
-							<article class="markdown-body">
-								<h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a></h3>
-								<div id="loading" ng-show="showLoading">Lade</div>
-								<div id="content" ng-hide="showLoading">
+							<div class="row">
+								<div class="col-xs-1 col-md-3"></div>
+								<div id="loading" class="col-xs-10 col-md-6" ng-show="showLoading">Lade</div>
+								<div id="content" class="col-xs-10 col-md-6" ng-hide="showLoading">
 									<div ng-repeat="element in elements">
 										<div ng-bind-html="element.context"></div>
 									</div>
 								</div>
-							</article>
+								<div class="col-xs-1 col-md-3"></div>
+							</div>
 						</div>
 					</div>
 				</div>

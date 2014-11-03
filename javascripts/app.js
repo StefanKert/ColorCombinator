@@ -5,7 +5,7 @@ angular.module('ColorCombinatorApp', ['ngSanitize'])
 		$scope.combinationCounter = 0;
 		$scope.elements = [];
 		
-		$scope.combineColors = function() {
+		$scope.combineColors = function(useReps) {
 			$scope.elements = [];
 			var opts = {
 			  lines: 13, // The number of lines to draw
@@ -37,15 +37,17 @@ angular.module('ColorCombinatorApp', ['ngSanitize'])
 				if(n > 0){
 					var shouldContinue = false;
 					for(var element = 0; element < $scope.elementsCount; element++){
-						for(var i = 0; i < values.length; i++) {
-							if(values[i] === element){								
-								shouldContinue = true;
-								break;
+						if(!useReps) {
+							for(var i = 0; i < values.length; i++) {
+								if(values[i] === element){								
+									shouldContinue = true;
+									break;
+								}
 							}
-						}
-						if(shouldContinue){
-							shouldContinue = false;
-							continue;
+							if(shouldContinue){
+								shouldContinue = false;
+								continue;
+							}
 						}
 						values.push(element);
 						printCombinations(n - 1);
@@ -62,10 +64,15 @@ angular.module('ColorCombinatorApp', ['ngSanitize'])
 					$scope.combinationCounter++;
 				}
 			}
-			
+			if(useReps && $scope.elementsCount > 5){
+				var calculatedCount = Math.pow($scope.elementsCount, $scope.elementsCount);
+				toastr.error('Sie haben den Wert ' + $scope.elementsCount + ' eingegeben. Mit diesem Wert w&uuml;rden sich ' + calculatedCount + ' Kombinationen ergeben und ich denke das interessiert niemanden.....');	
+				spinner.stop();
+				return;
+			}
 			if($scope.elementsCount > 10){
 				var calculatedCount = $scope.calculateFaculty($scope.elementsCount);
-				toastr.error('Sie haben den Wert ' + $scope.elementsCount + ' eingegeben. Mit diesem Wert w&uuml;rden sich ' + calculatedCount + ' Kombinationen ergeben und ich denke wir alle wissen, dass niemand so viel Zeit h&auml;tte dass anzusehen.');	
+				toastr.error('Sie haben den Wert ' + $scope.elementsCount + ' eingegeben. Mit diesem Wert w&uuml;rden sich ' + calculatedCount + ' Kombinationen ergeben und ich denke das interessiert niemanden.....');	
 				spinner.stop();
 				return;
 			}
