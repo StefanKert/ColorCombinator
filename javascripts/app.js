@@ -46,6 +46,14 @@ angular.module('ColorCombinatorApp', [])
 					$scope.combinationCounter++;
 				}
 			}
+			
+			if($scope.elementsCount > 7){
+				toastr.error('Bitte geben Sie keine Werte &uuml;ber 7 ein.');	
+				return;
+			}
+			
+			$scope.combinationCounter = 0;
+			contentElement.empty();
 			printCombinations($scope.elementsCount);
 		};		
 	}]);
