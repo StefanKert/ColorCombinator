@@ -51,5 +51,3 @@ angular.module('ColorCombinatorApp', [])
 		};		
 		$scope.combineColors();
 	}]);
-;
-
