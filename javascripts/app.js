@@ -49,5 +49,4 @@ angular.module('ColorCombinatorApp', [])
 			printCombinations($scope.elements);
 			alert("Es wurden insgesamt " + $scope.combinationCounter + " Elemente gezeichnet.");
 		};		
-		$scope.combineColors();
 	}]);
